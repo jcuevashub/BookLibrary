@@ -1,0 +1,31 @@
+<div class="container">
+  <h2 class="text-center text-primary">Lista de Libros</h2>
+  <hr>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Page Count</th>
+        <th scope="col">Excerpt</th>
+        <th scope="col">Publish Date</th>
+        <th scope="col">Accions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let book of books">
+      <tr>
+        <th scope="row">{{book.id}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.excerpt}}</td>
+        <td>{{book.publish}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="borrar(book.id)">
+            Borrar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
