@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+
+}
+
+td, th {
+  white-space: nowrap;
+  word-wrap: break-word;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  margin: 50px;
+}

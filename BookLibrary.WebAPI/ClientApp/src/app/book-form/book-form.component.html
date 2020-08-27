@@ -1,0 +1,52 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+  <div class="container">
+      <h2 class="text-primary title">Create a Book</h2>
+      <hr>
+    <input hidden type="text" class="form-control" formControlName="id">
+    <div class="col-12 col-sm-6 form-group">
+      <label><span class="text-danger">*</span>Title</label>
+      <input type="text" class="form-control" formControlName="title">
+      <div class="input-group-append"></div>
+    </div>
+    <span class="text-danger" *ngIf="bookForm.controls['title'].touched && bookForm.controls['title'].errors?.required">
+      El campo es requerido.
+    </span>
+
+    <div class="col-12 col-sm-6 form-group">
+      <label><span class="text-danger">*</span>Description</label>
+      <input type="text" class="form-control" formControlName="description">
+      <div class="input-group-append"></div>
+    </div>
+    <span class="text-danger"
+      *ngIf="bookForm.controls['description'].touched && bookForm.controls['description'].errors?.required">
+      El campo es requerido.
+    </span>
+
+    <div class="col-12 col-sm-6 form-group">
+      <label><span class="text-danger">*</span>Page Count</label>
+      <input type="text" class="form-control" formControlName="pageCount">
+      <div class="input-group-append"></div>
+    </div>
+    <span class="text-danger"
+      *ngIf="bookForm.controls['pageCount'].touched && bookForm.controls['pageCount'].errors?.required">
+      El campo es requerido.
+    </span>
+
+    <div class="col-12 col-sm-6 form-group">
+      <label><span class="text-danger">*</span>Excerpt</label>
+      <input type="text" class="form-control" formControlName="excerpt">
+      <div class="input-group-append"></div>
+    </div>
+    <span class="text-danger"
+      *ngIf="bookForm.controls['excerpt'].touched && bookForm.controls['excerpt'].errors?.required">
+      El campo es requerido.
+    </span>
+
+    <div class="col-12 col-sm-6 form-group">
+      <button *ngIf="!this.isEditing" class="btn btn-success  mr-2" type="submit" [disabled]="bookForm.invalid">Crear</button>
+      <button *ngIf="this.isEditing" class="btn btn-success  mr-2" type="button" [disabled]="bookForm.invalid" (click)="updateBook()">Actualizar</button>
+      <button class="btn btn-default" type="button" [routerLink]="['']" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</form>

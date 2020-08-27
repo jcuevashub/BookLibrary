@@ -1,9 +1,9 @@
 ﻿using BookLibrary.Core.Models;
+using BookLibrary.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BookLibrary.Services.Authors
@@ -95,7 +95,7 @@ namespace BookLibrary.Services.Authors
         /// Updates the author
         /// </summary>
         /// <param name="book">author</param>
-       public async Task<Author> UpdateAuthor(Author author)
+        public async Task<Author> UpdateAuthor(Author author)
         {
             Author result = await GetAuthorById(author.Id);
 
@@ -148,6 +148,27 @@ namespace BookLibrary.Services.Authors
                 }
             }
             return author;
+        }
+
+        public async Task<IList<Author>> GetAuthorByIdBook(int IdBook)
+        {
+            IList<Author> authors = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUrl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                response = await client.GetAsync(string.Format("authors/books/{0}", IdBook));
+                if (response.IsSuccessStatusCode)
+                {
+                    var readTask = response.Content.ReadAsAsync<IList<Author>>();
+                    readTask.Wait();
+
+                    authors = readTask.Result;
+                }
+            }
+            return authors;
         }
     }
 }

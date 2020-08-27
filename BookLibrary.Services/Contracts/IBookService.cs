@@ -1,10 +1,8 @@
 ﻿using BookLibrary.Core.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Services.Books
+namespace BookLibrary.Services.Contracts
 {
     /// <summary>
     /// Book service interface

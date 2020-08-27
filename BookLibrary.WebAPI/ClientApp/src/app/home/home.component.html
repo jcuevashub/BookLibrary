@@ -1,31 +1,43 @@
+
 <div class="container">
-  <h2 class="text-center text-primary">Lista de Libros</h2>
+  
+  <h2 class="text-primary title ">Lista de Libros</h2>
   <hr>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Page Count</th>
-        <th scope="col">Excerpt</th>
-        <th scope="col">Publish Date</th>
-        <th scope="col">Accions</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let book of books">
-      <tr>
-        <th scope="row">{{book.id}}</th>
-        <td>{{book.title}}</td>
-        <td>{{book.description}}</td>
-        <td>{{book.excerpt}}</td>
-        <td>{{book.publish}}</td>
-        <td>
-          <button type="button" class="btn btn-danger" (click)="borrar(book.id)">
-            Borrar
-          </button>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          <button type="button" class="btn btn-outline-primary btn-sm" [routerLink]="['Details', element.id]">Ver</button> |
+          <button type="button" class="btn btn-outline-danger btn-sm" [routerLink]="['Form', element.id]"> Editar</button> |
+          <button class="btn btn-outline-warning btn-sm" (click)="borrar(i, element)">Eliminar</button>
         </td>
-      </tr>
-    </tbody>
-  </table>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <button class="btn btn-primary" [routerLink]="['Form','']">Crear</button>
 </div>

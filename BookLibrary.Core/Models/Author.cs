@@ -13,7 +13,6 @@ namespace BookLibrary.Core.Models
         /// Represent the id of the author.
         /// </summary>
         public int Id { get; set; }
-        public Book Book { get; set; }
 
         /// <summary>
         /// Represent the id identifier of a book.

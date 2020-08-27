@@ -1,5 +1,6 @@
 using BookLibrary.Services.Authors;
 using BookLibrary.Services.Books;
+using BookLibrary.Services.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;

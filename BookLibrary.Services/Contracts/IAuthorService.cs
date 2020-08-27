@@ -1,10 +1,8 @@
 ﻿using BookLibrary.Core.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Services.Authors
+namespace BookLibrary.Services.Contracts
 {
     /// <summary>
     /// Authors service interface
@@ -14,7 +12,7 @@ namespace BookLibrary.Services.Authors
         /// <summary>
         /// Gets all authors
         /// </summary>
-        /// <returns>Lists of books</returns>
+        /// <returns>Lists of authors</returns>
         Task<IList<Author>> GetAllAuthors();
 
         /// <summary>
@@ -41,5 +39,12 @@ namespace BookLibrary.Services.Authors
         /// <param name="Id">Author identifier</param>
         /// <returns>Author</returns>
         Task<Author> GetAuthorById(int Id);
+
+        /// <summary>
+        /// Get author books
+        /// </summary>
+        /// <param name="Id">Book identifier</param>
+        /// <returns>Lists of books</returns>
+        Task<IList<Author>> GetAuthorByIdBook(int IdBook);
     }
 }

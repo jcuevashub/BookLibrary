@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="text-primary title">Book Details</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="col-12 col-sm-6 form-group">
+        <label><strong>Title:</strong></label>
+        {{book.title}}
+        <div class="input-group-append"></div>
+      </div>
+
+      <div class="col-12 col-sm-6 form-group">
+        <label><strong>Description:</strong></label>
+        {{book.description}}
+        <div class="input-group-append"></div>
+      </div>
+
+      <div class="col-12 col-sm-6 form-group">
+        <label><strong>Page Count:</strong></label>
+        {{book.pageCount}}
+        <div class="input-group-append"></div>
+      </div>
+
+      <div class="col-12 col-sm-6 form-group">
+        <label><strong>Excerpt:</strong></label>
+        {{book.excerpt}}
+      </div>
+
+      <div class="col-12 col-sm-6 form-group">
+        <label><strong>Publish Date:</strong></label>
+        {{book.publishDate}}
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div class="col-12 col-sm-6 form-group">
+        <label><strong>Author:</strong></label>
+        {{author.firstName}} {{author.lastName}}
+        <div class="input-group-append"></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 form-group">
+    <button class="btn btn-primary" type="button" [routerLink]="['']">Volver</button>
+  </div>
+
+</div>

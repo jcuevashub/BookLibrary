@@ -1,5 +1,5 @@
 ﻿using BookLibrary.Core.Models;
-using BookLibrary.Services.Authors;
+using BookLibrary.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.WebAPI.Controllers
@@ -32,7 +32,7 @@ namespace BookLibrary.WebAPI.Controllers
             var response = _authorService.GetAuthorById(Id);
 
             if (response == null)
-                return BadRequest(response);
+                return BadRequest();
 
             return Ok(response.Result);
         }
@@ -43,7 +43,7 @@ namespace BookLibrary.WebAPI.Controllers
             var response = _authorService.InsertAuthor(author);
 
             if (response == null)
-                return BadRequest(response);
+                return BadRequest();
 
             return Ok(response.Result);
         }
@@ -62,7 +62,18 @@ namespace BookLibrary.WebAPI.Controllers
             var response = _authorService.UpdateAuthor(author);
 
             if (response == null)
-                return BadRequest(response);
+                return BadRequest();
+
+            return Ok(response.Result);
+        }
+
+        [HttpGet("books/{IdBook}")]
+        public IActionResult GetAuthorByIdBook(int IdBook)
+        {
+            var response = _authorService.GetAuthorByIdBook(IdBook);
+
+            if (response == null)
+                return BadRequest();
 
             return Ok(response.Result);
         }

@@ -1,9 +1,9 @@
 ﻿using BookLibrary.Core.Models;
+using BookLibrary.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BookLibrary.Services.Books
@@ -145,7 +145,7 @@ namespace BookLibrary.Services.Books
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                response = await client.GetAsync(string.Format("api/books/{0}",Id));
+                response = await client.GetAsync(string.Format("api/books/{0}", Id));
                 if (response.IsSuccessStatusCode)
                 {
                     var readTask = response.Content.ReadAsAsync<Book>();
