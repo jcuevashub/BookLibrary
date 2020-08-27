@@ -1,8 +1,5 @@
 ﻿using BookLibrary.Services.Contracts;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BookLibrary.Test
 {
